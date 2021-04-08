@@ -12,7 +12,7 @@ namespace LabRob1
         private int Reitengresult { get; set; } = 0;
         private int Reiting { get; set; }
         private double Srreiting { get; set; }
-        internal Student(string name, int id, string cours) : base(name, id, cours)
+        internal Student(string name, string id, char cours) : base(name, id, cours)
         {
 
         }

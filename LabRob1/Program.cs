@@ -7,8 +7,8 @@ namespace LabRob1
     {
         static void Main(string[] args)
         {
-            Student student1 = new("Vlaod", 1, "5");
-            Student student2 = new("Lolo", 1, "2");
+            Student student1 = new("Vlaod", "1232434", '1');
+            Student student2 = new("Lolo",  "1323225", '5');
             Console.WriteLine($"{student1} \t {student2}");
             for (int i = 0; i < 10; i++)
             {
