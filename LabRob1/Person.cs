@@ -12,21 +12,24 @@ namespace LabRob1
         internal string Id { get; }
         internal char Cours { get; }   
         public override string ToString()
+        {               
+            Validation();
+            return Name + "\t" + Cours + "\t" + Id ;
+        }
+        public void Validation()
         {
             if (string.IsNullOrWhiteSpace(Name))
-                throw new Exception("Имя не должно быть пустым");
-            foreach (char c in Name)
-                if (char.IsNumber(c)||char.IsWhiteSpace(c)) 
-                    throw new Exception("В имени есть числа или пробелы");
+                throw new Exception("Имя не должно быть пустым и иметь числа");
+            foreach (char n in Name)
+               if( char.IsNumber(n))
+            throw new Exception("В имени есть числа");
 
-            if (char.IsWhiteSpace(Cours)||Cours<='0'||Cours>'5')
-                    throw new Exception("Курс не должен быть пустым и иметь значения от 1 до 5");
+            if (char.IsWhiteSpace(Cours)  || Cours <= '0' || Cours > '5')
+                throw new Exception("Курс не должен быть пустым и иметь значения от 1 до 5");
             foreach (char i in Id)
 
-                if (char.IsWhiteSpace(i)||Id.Length!=7)
-                    throw new Exception("В зачетной книге должно быть 7 чимволов и не должно быть пробелов ");
-            return Name +"\t"+ Cours + "\t" + Id;
-            
+            if (char.IsWhiteSpace(i) || Id.Length != 7)
+                throw new Exception("В зачетной книге должно быть 7 чимволов и не должно быть пробелов ");
         }
          
         public Person(string name, string id, char cours)

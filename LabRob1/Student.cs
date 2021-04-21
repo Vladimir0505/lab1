@@ -9,48 +9,45 @@ namespace LabRob1
 {
     internal class Student : Person
     {
-        private int Reitengresult { get; set; } = 0;
+        private double Reitengresult { get; set; } = 0;
         private int Reiting { get; set; }
         private double Srreiting { get; set; }
+        private int count { get;set; }
+
         internal Student(string name, string id, char cours) : base(name, id, cours)
         {
 
         }
-        public int Evaluation()
+        private int Evaluation()
         {
             Random n = new();
             Reiting = n.Next(60, 100);
             return Reiting;
         }
-        internal int SumReiting()
+        public double SumReiting()
         {
             Reitengresult += Reiting;
             return Reitengresult;
         }
-        internal double SrReiting()
+        public double SrReiting()
         {
             Srreiting += Reiting;
-            return Srreiting / 10;
+            return Srreiting / count;
         }
+        int[] ReitingMass = new int[10];
         public int[] ReitingMasss()
         {
-            int[] ReitingMass = new int[10];
             for (int i = 0; i < ReitingMass.Length; i++)
             {
-                ReitingMass[i] += Evaluation();
+                ReitingMass[i] = Evaluation();
+                count = i;
             }
+            count++;
             return ReitingMass;
         }
-        internal string[] subject = new[] { "Algebra", "English", "History", "Biology", "Chemistry",
-                        "Geometry", "Musica", "Adeptness", "Health", "Literture"  };
-        internal virtual string this[int numberg]
-        {
-            get
-            {
-                return subject[numberg];
-            }
-        }
-        
+
+
+
 
     }
 }
